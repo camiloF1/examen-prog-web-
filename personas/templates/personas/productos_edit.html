@@ -1,0 +1,43 @@
+{% extends "personas/base.html" %} {% block title %} Editar Producto {% endblock %} {% block content%}
+<br>
+<div class="container">
+    <br><br><br>
+
+
+
+    <form action={% url "productosAdd" %} method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <table>
+            <tr>
+                <td>
+                    Id producto : <input type="text" name="idProducto" value="{{producto.idProducto}}"><br> Nombre Producto: <input type="text" name="nombreProducto" value="{{producto.nombreProducto}}"><br> Stock : <input type="number" name="stock" value="{{producto.stock}}"><br>                    Precio : <input type="number" name="precio" value="{{producto.precio}}"><br> Foto Producto : {% if producto.foto %}
+                    <input type="file" name="fotoProducto" accept="image/*" value="{{producto.foto.url}}"><br> {%else%}
+                    <input type="file" name="fotoProducto" accept="image/*" value=""><br> {% endif %}
+                </td>
+                <td>
+                    {% if producto.foto %}
+                    <img src="{{producto.foto.url }}" alt="{{producto.foto}}"> {%else%} No hay foto {% endif %}
+                </td>
+            </tr>
+        </table>
+        <input type="submit" name="opcion" value="Actualizar">
+        <input type="submit" name="opcion" value="Volver">
+
+        <br>
+    </form>
+
+
+
+    <div id="idMensajes">
+
+        {% if mensaje%}
+        <div class="alert alert-success" role="alert">
+            {{mensaje}}
+        </div>
+        {% endif %}
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="estilos.css">
+
+</head>
+<body>
+ 
+<!--Inicio index/inicio-->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/personas/indexAdmin">AnimaPet</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        
+        <a class="nav-link active" aria-current="page" href="/personas/listadoProductos"> lista de productos</a>
+        <a class="nav-link active" aria-current="page" href="/personas/productosAdd"> Agregar productos</a>
+        <a class="nav-link active" aria-current="page" href="/personas/listarUsuarios"> Administrar usuarios</a>
+        <a class="nav-link active" aria-current="page" href="/personas/logout"> Logout</a>
+
+      </div>
+    </div>
+  </div>
+</nav>
+<!--Fin index/inicio-->
+
+
+
+{% load static %}
+{% block body %}
+{% if object_list %} 
+<div class="card">
+    <div class="card-header">
+        <strong class="card-tittle">Listado de usuarios</strong>
+    </div>
+    <div class="table-stats order-table ov-h">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Username</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for usuario in object_list %} 
+                <tr>
+                    <td>{{ usuario.email }}</td>
+                    <td>{{ usuario.username }}</td>
+                    <td>{{ usuario.nombre }}</td>
+                    <td>{{ usuario.apellido}}</td>
+                    <td>
+                        <a href="{% url 'usuarios_del' pk=usuario.username %}" class="btn btn-danger">Eliminar</a>
+                        <a href="{% url 'usuarios_edit' pk=usuario.username %}" class="btn btn-primary">Editar</a>
+                    </td>
+                </tr>
+                {% endfor %} 
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endif %} {%endblock%}
+
+
+<!--Inicio de Footer-->
+
+<div class="BoxFooter">
+  <div class="container">
+
+    <br><br>
+
+    <div class="row">
+
+      <div class="col"></div>
+
+      <div class="col" style="text-align: center;">
+        <h5 class="footerTitulo">Enlaces Rapidos</h5>
+      </div>
+
+      <div class="col" style="text-align: center;">
+        <h5 class="footerTitulo">Contacto</h5>
+      </div>
+    </div>
+
+      <div class="row">
+
+        <div class="col" style="justify-content: center;">
+          <div class="container">
+        <img src="{% static 'fotos/animalpet.jpg' %}" alt="" height="200px" width="250px">
+        </div>
+        </div>
+
+        <div class="col" style="text-align: center;">
+        <a href="#">Terminos y Condiciones</a> <br>
+        <a href="historia.html">Sobre Nosotros</a> <br>
+        <a href="register.html">Registrarse</a> <br>
+        <a href="#">Fundación "Animalindos"</a> <br>
+        <a href="#">Preguntas Frecuentes</a> <br>
+        <a href="#">Reseñas de Clientes</a>
+        <hr>
+        </div>
+
+        <div class="col" style="text-align: center;">
+        Whatsapp: +569 12300012 <br>
+        Telefono: +569 12345600 <br>
+        Correo: info@animalpet.cl <br>
+        Instagram: animapet.cl <br>
+
+        <hr>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <a href="https://www.instagram.com/"> <img src="{% static 'fotos/instagram.png' %}" alt="" height="50px" width="50px"></a>
+        </div>
+        <div class="col">
+          <a href="https://www.facebook.com/"> <img src="{% static 'fotos/facebook.png' %}" alt="" height="50px" width="50px"></a>
+        </div>
+        <div class="col">
+          <a href="https://www.twitter.com/"> <img src="{% static 'fotos/twitter.png' %}" alt="" height="50px" width="50px"></a>
+        </div>
+      </div>
+    
+  </div>
+</div> <!--fin de Footer-->
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+</body>
+</html>

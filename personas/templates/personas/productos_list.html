@@ -1,0 +1,36 @@
+{% extends "personas/base.html" %} {% block title %} Listado de Productos {% endblock %} {% block content%}
+<br>
+<div class="container">
+    <br><br><br>
+
+    <h1>Editar Datos de Productos</h1><br>
+
+    <table>
+        {% if productos %}
+        <th>Id Producto</th>
+        <th>Nombre Producto</th>
+        <th>Stock</th>
+        <th>Precio</th>
+        <th>Eliminar</th>
+        <th>Modificar</th>
+
+        {% for x in productos %}
+        <tr>
+            <td> {{ x.idProducto }}
+                <td> {{ x.nombreProducto }}
+                    <td> {{ x.stock }}
+                        <td> {{ x.precio }}
+                            <td> <a href="{% url 'productos_del'  pk=x.idProducto %}">Eliminar</a>
+                                <td> <a href="{% url 'productos_edit' pk=x.idProducto %}">Modificar</a>
+
+
+        </tr>
+        {% endfor %} {% endif %}
+
+    </table>
+</div>
+
+
+
+
+{% endblock %}

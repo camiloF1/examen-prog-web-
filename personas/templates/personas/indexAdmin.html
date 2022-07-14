@@ -1,0 +1,212 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="estilos.css">
+
+</head>
+<body>
+ 
+<!--Inicio index/inicio-->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="indexAdmin">AnimaPet</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        
+        <a class="nav-link active" aria-current="page" href="listadoProductos"> lista de productos</a>
+        <a class="nav-link active" aria-current="page" href="productosAdd"> Agregar productos</a>
+        <a class="nav-link active" aria-current="page" href="listarUsuarios"> Administrar usuarios</a>
+        <a class="nav-link active" aria-current="page" href="carrito">Carrito</a>
+        <a class="nav-link active" aria-current="page" href="logout"> Logout</a>
+
+
+      </div>
+    </div>
+  </div>
+</nav>
+<!--Fin index/inicio-->
+
+
+
+{% if messages %}
+{% for message in messages %}
+<div class="notification {{ message.tags}}">
+    {{message}}
+</div>
+{% endfor %}
+{% endif %}
+
+<div class="container"> <!--container para mantener centrado-->
+
+  <br>
+
+  <div class="boxAdSub"> <h4>HAZ UNA DONACIÓN PARA OBTENER UN 5% DE DESCUENTO EN TUS COMPRAS</h4>  <!--curvar box-->
+                          <a href="registro"> <h4>REGISTRATE AQUI</h4></a>   </div>
+
+<!--Inicio Carrusel-->
+
+<div class="col-auto p-5">  <!--https://codea.app/blog/centrar-div-boostrap-->
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{% static 'fotos/perrohd.jpg' %}" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Perros</h5>
+          <p>Productos de fabricación chilena</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'fotos/gatohd.jpg' %}" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Gatos</h5>
+          <p>Productos varios</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'fotos/huronhd.jpg' %}" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Animales Exoticos</h5>
+          <p>Para el cuidado de tus mejores amigos.</p>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+
+<!--fin carrusel-->
+
+<br> <br>
+
+<!--Catalogos href-->
+
+<div class="row row-cols-1 row-cols-sm-3 g-3">
+  <div class="col">
+    <div class="card h-100"> 
+      <a href="catPerro.html"> <img src="{% static 'fotos/Catperroindex.jpg' %}" class="card-img-top" alt="..."> </a> 
+      <div class="card-body">
+        <h5 class="card-title">Catalogo de Perros</h5>
+        <p class="card-text">Collares, identificaciones, bandanas, etc.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <a href="catGato.html"> <img src="{% static 'fotos/Catgatoindex.jpg' %}" class="card-img-top" alt="..."></a>
+      <div class="card-body">
+        <h5 class="card-title">Catalogo de Gatos</h5>
+        <p class="card-text">Rascadores, cama, alimentos, etc.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <a href="catExotico.html"> <img src="{% static 'fotos/Cathuronindex.jpg' %}" class="card-img-top" alt="..."></a>
+      <div class="card-body">
+        <h5 class="card-title">Catalogo de Animales Exoticos</h5>
+        <p class="card-text">Accesorios, Jaulas, Bebederos, etc.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Fin Catalogos href-->
+
+<br> <br>
+
+
+
+</div> <!--fin del container-->
+
+<!--Inicio de Footer-->
+
+<div class="BoxFooter">
+  <div class="container">
+
+    <br><br>
+
+    <div class="row">
+
+      <div class="col"></div>
+
+      <div class="col" style="text-align: center;">
+        <h5 class="footerTitulo">Enlaces Rapidos</h5>
+      </div>
+
+      <div class="col" style="text-align: center;">
+        <h5 class="footerTitulo">Contacto</h5>
+      </div>
+    </div>
+
+      <div class="row">
+
+        <div class="col" style="justify-content: center;">
+          <div class="container">
+        <img src="{% static 'fotos/animalpet.jpg' %}" alt="" height="200px" width="250px">
+        </div>
+        </div>
+
+        <div class="col" style="text-align: center;">
+        <a href="#">Terminos y Condiciones</a> <br>
+        <a href="historia.html">Sobre Nosotros</a> <br>
+        <a href="register.html">Registrarse</a> <br>
+        <a href="#">Fundación "Animalindos"</a> <br>
+        <a href="#">Preguntas Frecuentes</a> <br>
+        <a href="#">Reseñas de Clientes</a>
+        <hr>
+        </div>
+
+        <div class="col" style="text-align: center;">
+        Whatsapp: +569 12300012 <br>
+        Telefono: +569 12345600 <br>
+        Correo: info@animalpet.cl <br>
+        Instagram: animapet.cl <br>
+
+        <hr>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <a href="https://www.instagram.com/"> <img src="{% static 'fotos/instagram.png' %}" alt="" height="50px" width="50px"></a>
+        </div>
+        <div class="col">
+          <a href="https://www.facebook.com/"> <img src="{% static 'fotos/facebook.png' %}" alt="" height="50px" width="50px"></a>
+        </div>
+        <div class="col">
+          <a href="https://www.twitter.com/"> <img src="{% static 'fotos/twitter.png' %}" alt="" height="50px" width="50px"></a>
+        </div>
+      </div>
+    
+  </div>
+</div> <!--fin de Footer-->
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+</body>
+</html>
